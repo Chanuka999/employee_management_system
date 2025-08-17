@@ -1,0 +1,85 @@
+/* Container */
+.form-container {
+  max-width: 100px; /* 👈 controlled width */
+  margin: 40px auto;
+  padding: 20px;
+  background: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-family: Arial, sans-serif;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+}
+
+/* Heading */
+.form-container h2 {
+  text-align: center;
+  margin-bottom: 15px;
+  font-size: 1.2rem;
+  color: #222;
+}
+
+/* Form */
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Labels */
+label {
+  margin: 8px 0 4px;
+  font-weight: bold;
+  font-size: 0.9rem;
+  color: #444;
+}
+
+/* Inputs */
+input[type="text"] {
+  padding: 8px 10px;
+  font-size: 0.9rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  outline: none;
+  transition: border-color 0.3s;
+}
+
+input[type="text"]:focus {
+  border-color: #007bff;
+}
+
+/* Buttons */
+.btn-group {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 15px;
+}
+
+input[type="submit"],
+input[type="reset"] {
+  flex: 1;
+  margin: 0 5px;
+  padding: 8px;
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+input[type="submit"] {
+  background: #007bff;
+  color: white;
+}
+
+input[type="submit"]:hover {
+  background: #0056b3;
+}
+
+input[type="reset"] {
+  background: #e0e0e0;
+  color: #333;
+}
+
+input[type="reset"]:hover {
+  background: #c0c0c0;
+}
