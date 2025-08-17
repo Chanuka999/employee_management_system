@@ -1,0 +1,5 @@
+.list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 equal columns */
+  gap: 1rem;
+}
