@@ -6,6 +6,7 @@ import CardMedia from "@mui/material/CardMedia";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 const EmployeeCard = ({ employee }) => {
   const onDeleteEmployee = (id) => {
@@ -41,9 +42,9 @@ const EmployeeCard = ({ employee }) => {
         <Button size="small" onClick={() => onDeleteEmployee(employee._id)}>
           Delete
         </Button>
-        <Button size="small" to={`/showdetails/${employee._id}`}>
+        <Link size="small" to={`/showdetails/${employee._id}`}>
           Display
-        </Button>
+        </Link>
       </CardActions>
     </Card>
   );
