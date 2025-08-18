@@ -5,7 +5,17 @@ import "./EmployeeList.css";
 
 const EmployeeList = () => {
   const [employees, setEmployees] = useState([]);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [filteredEmployee, setFilterdEmployee] = useState([]);
 
+  useEffect(() => {
+    const lowerCaseQuery = searchQuery.toLowerCase();
+
+    const filterd = employees.filter((employee) =>
+      employee.name.toLowerCase().includes(lowerCaseQuery)
+    );
+    setFilterdEmployee(filterd);
+  }, [searchQuery, employees]);
   useEffect(() => {
     axios
       .get("http://localhost:4000/api/employees")
@@ -20,15 +30,39 @@ const EmployeeList = () => {
       });
   }, []);
 
+  const onDeleteEmployee = (id) => {
+    axios
+      .delete(`http://localhost:4000/api/employees/${id}`)
+      .then(() => {
+        // window.location.reload();
+        setEmployees(employees.filter((employee) => employee._id !== id));
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
   const employeeList =
-    employees.length === 0
+    filteredEmployee.length === 0
       ? "no employees found"
-      : employees.map((employee, index) => (
-          <EmployeeCard key={index} employee={employee} />
+      : filteredEmployee.map((employee, index) => (
+          <EmployeeCard
+            key={index}
+            employee={employee}
+            onDelete={onDeleteEmployee}
+          />
         ));
   return (
     <div className="show_Employeelist">
       <div className="container">
+        <div className="search-bar">
+          <input
+            type="text"
+            placeholder="search employees"
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+          />
+        </div>
         <div className="list">{employeeList}</div>
       </div>
     </div>
